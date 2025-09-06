@@ -1,0 +1,11 @@
+# Netlify redirects file
+# This handles 404 errors with a custom page
+
+# Handle 404 errors with custom page
+/*    /404.html   404
+
+# Optional: Specific redirects for common patterns
+# Uncomment if needed:
+# /home   /index.html   200
+# /about  /index.html   200
+# /contact /index.html  200

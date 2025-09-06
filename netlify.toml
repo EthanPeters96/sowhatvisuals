@@ -25,11 +25,10 @@
     Cache-Control = "public, max-age=31536000, immutable"
 
 [[redirects]]
-  # Handle SPA routing if needed (optional for this static site)
+  # Handle actual 404 errors with custom page
   from = "/*"
-  to = "/index.html"
-  status = 200
-  conditions = {Role = ["admin", "editor"]}
+  to = "/404.html"
+  status = 404
 
 # Form settings
 [forms]
