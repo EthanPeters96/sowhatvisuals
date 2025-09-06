@@ -1,5 +1,12 @@
 module.exports = [
     {
+        ignores: [
+            '.codacy/**',
+            'node_modules/**',
+            '*.min.js'
+        ]
+    },
+    {
         languageOptions: {
             ecmaVersion: 2022,
             sourceType: 'script',

@@ -13,12 +13,14 @@ Thank you for your interest in contributing to the SowhatVisuals portfolio websi
 ### Local Development Setup
 
 1. **Clone the repository**:
+
    ```bash
    git clone https://github.com/EthanPeters96/sowhatvisuals.git
    cd sowhatvisuals
    ```
 
 2. **Install dependencies**:
+
    ```bash
    npm install
    ```
@@ -41,7 +43,7 @@ npx eslint script.js --fix
 
 ## 📁 Project Structure
 
-```
+```text
 sowhatvisuals/
 ├── index.html              # Main website page
 ├── styles.css              # CSS styling
@@ -62,18 +64,21 @@ sowhatvisuals/
 ## 🎨 Design Guidelines
 
 ### Color Scheme
+
 - **Primary**: Black (#000000)
 - **Secondary**: White (#FFFFFF)
 - **Accent**: Gray shades for subtle contrast
 
 ### Typography
+
 - **Font**: Montserrat (Google Fonts)
 - **Weights**: Bold (700) and ExtraBold (800)
 - **Usage**: ExtraBold for headings, Bold for body text
 
 ### Responsive Design
+
 - **Mobile First**: Design starts with mobile layout
-- **Breakpoints**: 
+- **Breakpoints**:
   - Mobile: < 768px
   - Tablet: 768px - 1024px
   - Desktop: > 1024px
@@ -81,24 +86,28 @@ sowhatvisuals/
 ## 💻 Development Guidelines
 
 ### HTML
+
 - Use semantic HTML5 elements
 - Maintain accessibility standards
 - Include proper meta tags
 - Use descriptive alt text for images
 
 ### CSS
+
 - Follow BEM methodology for class naming
 - Use CSS Grid and Flexbox for layouts
 - Maintain responsive design principles
 - Keep specificity low
 
 ### JavaScript
+
 - Use modern ES6+ syntax
 - Follow ESLint configuration
 - Write vanilla JavaScript (no jQuery)
 - Add comments for complex logic
 
 ### Performance
+
 - Optimize images before adding
 - Use lazy loading for images
 - Minimize HTTP requests
@@ -107,13 +116,15 @@ sowhatvisuals/
 ## 🔧 Making Changes
 
 ### Branch Naming Convention
+
 - `feature/description` - New features
 - `fix/description` - Bug fixes
 - `docs/description` - Documentation updates
 - `style/description` - Style/design changes
 
 ### Commit Message Format
-```
+
+```text
 type(scope): brief description
 
 Detailed explanation if needed
@@ -127,6 +138,7 @@ Detailed explanation if needed
 ### Pull Request Process
 
 1. **Create a branch**:
+
    ```bash
    git checkout -b feature/your-feature-name
    ```
@@ -137,12 +149,14 @@ Detailed explanation if needed
    - Run ESLint to check code quality
 
 3. **Commit your changes**:
+
    ```bash
    git add .
    git commit -m "feat: add new portfolio section"
    ```
 
 4. **Push to GitHub**:
+
    ```bash
    git push origin feature/your-feature-name
    ```
@@ -155,6 +169,7 @@ Detailed explanation if needed
 ## 🧪 Testing
 
 ### Manual Testing Checklist
+
 - [ ] Test on mobile, tablet, and desktop
 - [ ] Verify all navigation links work
 - [ ] Test contact form functionality
@@ -164,6 +179,7 @@ Detailed explanation if needed
 - [ ] Check browser compatibility
 
 ### Cross-Browser Testing
+
 - **Chrome** (latest)
 - **Firefox** (latest)
 - **Safari** (latest)
@@ -194,6 +210,7 @@ Detailed explanation if needed
 ## 🚀 Deployment
 
 ### Netlify Deployment
+
 This site is configured for Netlify:
 
 1. **Automatic deployments** from main branch
@@ -202,14 +219,18 @@ This site is configured for Netlify:
 4. **SSL certificate** automatically provided
 
 ### Environment Variables
+
 If needed, add environment variables in:
+
 - **Local**: Create `.env` file (add to `.gitignore`)
 - **Netlify**: Site Settings > Environment Variables
 
 ## 📋 Issue Reporting
 
 ### Bug Reports
+
 Include:
+
 - **Steps to reproduce**
 - **Expected behavior**
 - **Actual behavior**
@@ -217,7 +238,9 @@ Include:
 - **Screenshots if applicable**
 
 ### Feature Requests
+
 Include:
+
 - **Description** of the feature
 - **Use case** and benefits
 - **Mockups or examples** if available

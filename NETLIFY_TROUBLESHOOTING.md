@@ -5,11 +5,13 @@ If you're seeing a "Page not found" error on Netlify, here are the steps to reso
 ## ✅ **Fixed Issues**
 
 ### 1. **Redirect Configuration**
+
 - **Problem**: The original `netlify.toml` had conditional redirects that only worked for admin/editor roles
 - **Solution**: Updated redirects to work for all visitors
 - **Files updated**: `netlify.toml`, `_redirects`
 
 ### 2. **Backup Redirect Method**
+
 - Added `_redirects` file as a fallback method
 - This ensures all routes serve `index.html` properly
 
@@ -18,6 +20,7 @@ If you're seeing a "Page not found" error on Netlify, here are the steps to reso
 After making these changes:
 
 1. **Commit and push changes**:
+
    ```bash
    git add .
    git commit -m "fix: resolve Netlify 404 errors with proper redirects"
@@ -37,16 +40,19 @@ After making these changes:
 ## 🚨 **Common Netlify 404 Causes**
 
 ### **Build Issues**
+
 - **Check**: Netlify build logs for errors
 - **Solution**: Ensure `publish = "."` in netlify.toml
 - **Verify**: All files are committed to GitHub
 
 ### **File Path Issues**
+
 - **Check**: Case sensitivity in file names
 - **Check**: Relative vs absolute paths
 - **Solution**: Use consistent lowercase naming
 
 ### **Configuration Issues**
+
 - **Check**: `netlify.toml` syntax
 - **Check**: Redirect rules
 - **Solution**: Use both `netlify.toml` and `_redirects`
@@ -59,7 +65,8 @@ After making these changes:
    - Review build and deploy logs
 
 2. **Verify File Structure**:
-   ```
+
+   ```text
    ✅ index.html (in root)
    ✅ styles.css
    ✅ script.js
@@ -80,14 +87,17 @@ After making these changes:
 ## 🔍 **Specific Error Messages**
 
 ### "Page not found" with 404 status
+
 - **Cause**: Missing or incorrect redirect rules
 - **Solution**: Use the updated `netlify.toml` and `_redirects` files
 
 ### "Deploy failed" or build errors
+
 - **Cause**: Build configuration issues
 - **Solution**: Ensure build command is empty for static sites
 
 ### Assets not loading (CSS/JS)
+
 - **Cause**: Incorrect file paths
 - **Solution**: Use relative paths from root directory
 
@@ -100,6 +110,7 @@ After making these changes:
 ## ✨ **Success Indicators**
 
 After fixing:
+
 - ✅ Homepage loads at your Netlify URL
 - ✅ All navigation links work
 - ✅ Images and assets load properly

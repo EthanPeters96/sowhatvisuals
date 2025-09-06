@@ -32,7 +32,7 @@ function initNavigation() {
 
     // Navbar scroll effect
     window.addEventListener('scroll', function() {
-        if (window.scrollY > 100) {
+        if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
@@ -251,32 +251,88 @@ function initContactForm() {
 
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Always prevent default submission
+
             // Get form data for validation
             const formData = new FormData(contactForm);
             const name = formData.get('name');
             const email = formData.get('email');
-            const message = formData.get('message');
+            const budget = formData.get('budget');
+            const projectDetails = formData.get('project-details');
 
             // Basic validation
-            if (!name || !email || !message) {
-                e.preventDefault();
+            if (!name || !email || !budget || !projectDetails) {
                 showNotification('Please fill in all required fields.', 'error');
                 return;
             }
 
             if (!isValidEmail(email)) {
-                e.preventDefault();
                 showNotification('Please enter a valid email address.', 'error');
                 return;
             }
 
-            // If validation passes, show sending state and let Netlify handle submission
+            // Show loading state
             const submitBtn = contactForm.querySelector('.submit-btn');
-
+            const originalHTML = submitBtn.innerHTML;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             submitBtn.disabled = true;
 
-            // Show immediate feedback
+            // Check if we're on localhost/development
+            const isLocalhost = window.location.hostname === 'localhost' ||
+                               window.location.hostname === '127.0.0.1' ||
+                               window.location.hostname === '' ||
+                               window.location.protocol === 'file:';
+
+            if (isLocalhost) {
+                // For local development, simulate form submission
+                setTimeout(() => {
+                    // Reset button
+                    submitBtn.innerHTML = originalHTML;
+                    submitBtn.disabled = false;
+
+                    // Show success message
+                    showNotification('Message sent successfully! (Development mode)', 'success');
+
+                    // Reset form
+                    contactForm.reset();
+
+                    // Log form data to console for development
+                    console.log('Form submitted in development mode:', {
+                        name: name,
+                        email: email,
+                        budget: budget,
+                        projectDetails: projectDetails
+                    });
+                }, 1500);
+            } else {
+                // For production (Netlify), submit via fetch to handle properly
+                fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(formData).toString()
+                })
+                    .then(() => {
+                    // Reset button
+                        submitBtn.innerHTML = originalHTML;
+                        submitBtn.disabled = false;
+
+                        // Show success message
+                        showNotification('Message sent successfully!', 'success');
+
+                        // Reset form
+                        contactForm.reset();
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+
+                        // Reset button
+                        submitBtn.innerHTML = originalHTML;
+                        submitBtn.disabled = false;
+
+                        // Show error message
+                        showNotification('There was an error sending your message. Please try again.', 'error');
+                    });
+            }
             showNotification('Sending your message...', 'info');
 
             // Note: Netlify will handle the actual form submission

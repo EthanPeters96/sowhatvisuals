@@ -3,13 +3,16 @@
 ## Quick Deployment to Netlify
 
 ### Method 1: Drag & Drop (Easiest)
+
 1. **Prepare files**: Ensure all files are in the project root
 2. **Visit Netlify**: Go to [netlify.com](https://netlify.com) and sign up/log in
 3. **Deploy**: Drag the entire project folder to the Netlify deploy area
 4. **Configure**: Your site will be live immediately with a random URL
 
 ### Method 2: Git Repository (Recommended)
+
 1. **Create Git Repository**:
+
    ```bash
    git init
    git add .
@@ -41,12 +44,14 @@ The site includes a `netlify.toml` file with optimized settings:
 ## Contact Form Features
 
 ✅ **Netlify Forms Integration**:
+
 - Automatic spam protection with honeypot field
 - Form submissions appear in Netlify dashboard
 - Email notifications for new submissions
 - Custom success page after form submission
 
 ✅ **Form Data**:
+
 - Accessible via Netlify admin panel
 - Exportable to CSV
 - Integration with Zapier, webhooks available
@@ -69,6 +74,7 @@ The site includes a `netlify.toml` file with optimized settings:
 ## Environment Variables (if needed)
 
 If you need to add environment variables:
+
 1. Go to Site settings > Environment variables
 2. Add any required variables
 3. Redeploy if necessary
@@ -108,15 +114,18 @@ The site is configured for optimal Netlify performance:
 ## Troubleshooting
 
 **Form not working?**
+
 - Check Netlify dashboard under Forms section
 - Ensure `data-netlify="true"` is present in form tag
 - Verify form has a `name` attribute
 
 **Images not loading?**
+
 - Check file paths are relative to project root
 - Ensure image files are included in deployment
 
 **Site not updating?**
+
 - Check deployment status in Netlify dashboard
 - Trigger manual deploy if needed
 - Clear browser cache
@@ -124,6 +133,7 @@ The site is configured for optimal Netlify performance:
 ## Support
 
 For Netlify-specific issues:
+
 - [Netlify Documentation](https://docs.netlify.com/)
 - [Netlify Community](https://community.netlify.com/)
 - [Netlify Support](https://www.netlify.com/support/)
