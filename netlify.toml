@@ -1,0 +1,39 @@
+[build]
+  # This is the directory that Netlify will deploy
+  publish = "."
+  
+  # No build command needed for static HTML site
+  command = ""
+
+[build.environment]
+  # Set Node.js version if needed for build tools
+  NODE_VERSION = "18"
+
+[[headers]]
+  # Apply security headers to all pages
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  # Cache static assets for better performance
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[redirects]]
+  # Handle SPA routing if needed (optional for this static site)
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  conditions = {Role = ["admin", "editor"]}
+
+# Form settings
+[forms]
+  # Enable form notifications
+  [forms.contact]
+    name = "contact"
+    subject = "New Contact Form Submission from SowhatVisuals.com"

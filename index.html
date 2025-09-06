@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sowhat!Visuals | Gyles Belgrave - Videographer & Content Creator</title>
+    <meta
+      name="description"
+      content="Sowhat!Visuals - Cinematic videography and content creation by Gyles Belgrave. Specializing in social media content, brand marketing, and storytelling visuals." />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap"
+      rel="stylesheet" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Font Awesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <img src="assets/logos/sowhatvisuals-logo.png" alt="SowhatVisuals Logo" id="nav-logo" />
+        </div>
+        <ul class="nav-menu">
+          <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="#work" class="nav-link">Work</a></li>
+          <li class="nav-item"><a href="#brands" class="nav-link">Brands</a></li>
+          <li class="nav-item"><a href="#pricing" class="nav-link">Music Packages</a></li>
+          <li class="nav-item"><a href="#packages" class="nav-link">Visual Packages</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-video-container">
+        <video id="hero-video" autoplay muted loop playsinline>
+          <source src="assets/videos/showreel-placeholder.mp4" type="video/mp4" />
+          <!-- Placeholder background -->
+        </video>
+        <div class="hero-video-placeholder">
+          <i class="fas fa-play-circle"></i>
+          <p>Video Showreel Placeholder</p>
+        </div>
+      </div>
+      <div class="hero-overlay">
+        <div class="hero-content">
+          <h1 class="hero-name">GYLES BELGRAVE</h1>
+          <p class="hero-tagline">Videographer & Content Creator</p>
+          <p class="hero-subtitle">
+            Cinematic visuals that connect with audiences and convert into real results
+          </p>
+          <a href="#work" class="cta-button">View Portfolio</a>
+        </div>
+      </div>
+      <div class="scroll-indicator">
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="about">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">About Me</h2>
+        </div>
+        <div class="about-content">
+          <div class="about-text">
+            <p class="about-intro">
+              I'm Gyles Belgrave, founder of Sowhat!Visuals, a videographer and content creator
+              specialising in cinematic visuals, social media content, and brand marketing.
+            </p>
+            <p>
+              With a sharp eye for detail and a focus on storytelling, I create visuals that connect
+              with audiences and convert into real results. My style blends clean, modern aesthetics
+              with high-energy edits tailored for today's fast-moving platforms like TikTok,
+              Instagram, and YouTube.
+            </p>
+            <p class="about-music">
+              Beyond videography, I've spent over 8 years in the music industry, producing and
+              engineering for artists like ArrDee, Headie One, and Lil Durk, with placements on
+              ITV1, BBC Radio 1, and Fire in the Booth. This background gives me a unique edge when
+              working with artists, labels, and independent creatives.
+            </p>
+
+            <div class="stats">
+              <div class="stat">
+                <span class="stat-number">8+</span>
+                <span class="stat-label">Years Experience</span>
+              </div>
+              <div class="stat">
+                <span class="stat-number">100+</span>
+                <span class="stat-label">Projects Completed</span>
+              </div>
+              <div class="stat">
+                <span class="stat-number">50+</span>
+                <span class="stat-label">Happy Clients</span>
+              </div>
+            </div>
+          </div>
+          <div class="about-image">
+            <div class="image-placeholder">
+              <i class="fas fa-user-circle"></i>
+              <p>Headshot Placeholder</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- My Work Section -->
+    <section id="work" class="work">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">My Work</h2>
+          <p class="section-subtitle">
+            A collection of cinematic visuals that capture the essence and energy of modern content
+            creation
+          </p>
+        </div>
+
+        <div class="work-filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="video">Video</button>
+          <button class="filter-btn" data-filter="photo">Photo</button>
+        </div>
+
+        <div class="work-grid">
+          <!-- Video Work Items -->
+          <div class="work-item video" data-category="video">
+            <div class="work-image">
+              <div class="image-placeholder">
+                <i class="fas fa-video"></i>
+                <p>Music Video Project</p>
+              </div>
+              <div class="work-overlay">
+                <div class="work-info">
+                  <h3>Music Video Project</h3>
+                  <p>High-energy music video production</p>
+                  <button class="view-btn" data-type="video" data-src="assets/videos/project1.mp4">
+                    <i class="fas fa-play"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="work-item video" data-category="video">
+            <div class="work-image">
+              <div class="image-placeholder">
+                <i class="fas fa-video"></i>
+                <p>Brand Commercial</p>
+              </div>
+              <div class="work-overlay">
+                <div class="work-info">
+                  <h3>Brand Commercial</h3>
+                  <p>Commercial content for social media</p>
+                  <button class="view-btn" data-type="video" data-src="assets/videos/project2.mp4">
+                    <i class="fas fa-play"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="work-item video" data-category="video">
+            <div class="work-image">
+              <div class="image-placeholder">
+                <i class="fas fa-video"></i>
+                <p>Documentary Style</p>
+              </div>
+              <div class="work-overlay">
+                <div class="work-info">
+                  <h3>Documentary Style</h3>
+                  <p>Behind-the-scenes content creation</p>
+                  <button class="view-btn" data-type="video" data-src="assets/videos/project3.mp4">
+                    <i class="fas fa-play"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Photo Work Items -->
+          <div class="work-item photo" data-category="photo">
+            <div class="work-image">
+              <div class="image-placeholder">
+                <i class="fas fa-camera"></i>
+                <p>Portrait Session</p>
+              </div>
+              <div class="work-overlay">
+                <div class="work-info">
+                  <h3>Portrait Session</h3>
+                  <p>Professional artist photography</p>
+                  <button class="view-btn" data-type="image" data-src="assets/images/project1.jpg">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="work-item photo" data-category="photo">
+            <div class="work-image">
+              <div class="image-placeholder">
+                <i class="fas fa-camera"></i>
+                <p>Event Coverage</p>
+              </div>
+              <div class="work-overlay">
+                <div class="work-info">
+                  <h3>Event Coverage</h3>
+                  <p>Live event photography</p>
+                  <button class="view-btn" data-type="image" data-src="assets/images/project2.jpg">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="work-item photo" data-category="photo">
+            <div class="work-image">
+              <div class="image-placeholder">
+                <i class="fas fa-camera"></i>
+                <p>Brand Shoot</p>
+              </div>
+              <div class="work-overlay">
+                <div class="work-info">
+                  <h3>Brand Shoot</h3>
+                  <p>Product and lifestyle photography</p>
+                  <button class="view-btn" data-type="image" data-src="assets/images/project3.jpg">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Brands I've Worked With Section -->
+    <section id="brands" class="brands">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Brands I've Worked With</h2>
+          <p class="section-subtitle">Trusted by industry leaders and emerging brands alike</p>
+        </div>
+
+        <div class="brands-grid">
+          <div class="brand-item">
+            <img
+              src="SWV Assets/brands ive worked with /bbc radio 1 xtra.jpg"
+              alt="BBC Radio 1 Xtra"
+              loading="lazy" />
+          </div>
+          <div class="brand-item">
+            <img src="SWV Assets/brands ive worked with /ITV 1.png" alt="ITV 1" loading="lazy" />
+          </div>
+          <div class="brand-item">
+            <img
+              src="SWV Assets/brands ive worked with /fire in the booth.jpg"
+              alt="Fire in the Booth"
+              loading="lazy" />
+          </div>
+          <div class="brand-item">
+            <img
+              src="SWV Assets/brands ive worked with /relentless records.png"
+              alt="Relentless Records"
+              loading="lazy" />
+          </div>
+          <div class="brand-item">
+            <img
+              src="SWV Assets/brands ive worked with /bradley lowery foundation.png"
+              alt="Bradley Lowery Foundation"
+              loading="lazy" />
+          </div>
+          <div class="brand-item">
+            <img
+              src="SWV Assets/brands ive worked with /crypto fight night .png"
+              alt="Crypto Fight Night"
+              loading="lazy" />
+          </div>
+          <div class="brand-item">
+            <img
+              src="SWV Assets/brands ive worked with /on the beach logo.jpg"
+              alt="On The Beach"
+              loading="lazy" />
+          </div>
+          <div class="brand-item">
+            <img
+              src="SWV Assets/brands ive worked with /josephs smile charity.webp"
+              alt="Joseph's Smile Charity"
+              loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Music Content Packages</h2>
+          <p class="section-subtitle">Professional music video and content creation packages</p>
+        </div>
+
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h3>Promo Pack</h3>
+              <div class="price">
+                <span class="currency">£</span>
+                <span class="amount">100</span>
+              </div>
+            </div>
+            <ul class="pricing-features">
+              <li>
+                <i class="fas fa-mobile-alt"></i>1x 30-60 sec Social Media Promo (TikTok/IG Reel)
+              </li>
+              <li><i class="fas fa-check"></i>Shot in-studio or on location (1hr)</li>
+              <li><i class="fas fa-bolt"></i>Quick turnaround (3-4 days)</li>
+              <li><i class="fas fa-calendar-day"></i>Delivered in 1 days</li>
+            </ul>
+            <button class="pricing-btn">Get Started</button>
+          </div>
+
+          <div class="pricing-card featured">
+            <div class="featured-badge">Most Popular</div>
+            <div class="pricing-header">
+              <h3>Rollout Pack</h3>
+              <div class="price">
+                <span class="currency">£</span>
+                <span class="amount">300</span>
+              </div>
+            </div>
+            <ul class="pricing-features">
+              <li><i class="fas fa-video"></i>3x TikTok/IG Promos (15-30 sec each)</li>
+              <li><i class="fas fa-camera"></i>Shot in 1 session (studio/location)</li>
+              <li><i class="fas fa-edit"></i>Edited within 1 week</li>
+              <li><i class="fas fa-plus"></i><strong>Add-Ons:</strong></li>
+              <li><i class="fas fa-arrow-right"></i>Extra TikTok clips: +£50 each</li>
+              <li><i class="fas fa-arrow-right"></i>Lyric video: from £120</li>
+              <li><i class="fas fa-arrow-right"></i>BTS photographer: from £100</li>
+            </ul>
+            <button class="pricing-btn">Get Started</button>
+          </div>
+
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h3>Artist Growth Pack</h3>
+              <div class="price">
+                <span class="currency">£</span>
+                <span class="amount">700</span>
+              </div>
+            </div>
+            <ul class="pricing-features">
+              <li>
+                <i class="fas fa-play-circle"></i>1x Music Video (basic performance/b-roll style)
+              </li>
+              <li><i class="fas fa-cut"></i>5x Promo Cutdowns Clip</li>
+              <li><i class="fas fa-camera-retro"></i>1x Behind-The-Scenes Clip</li>
+              <li><i class="fas fa-calendar-alt"></i>Content calendar (posting schedule)</li>
+              <li><i class="fas fa-file-alt"></i>Full Content Calendar</li>
+              <li><i class="fas fa-share-alt"></i>Social Media Posting & Strategy</li>
+            </ul>
+            <button class="pricing-btn">Get Started</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SowhatVisuals Packages Section -->
+    <section id="packages" class="packages">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Sowhat!Visuals Packages</h2>
+          <p class="section-subtitle">
+            Comprehensive content creation solutions for brands and businesses
+          </p>
+        </div>
+
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h3>Starter Content Pack</h3>
+              <div class="price">
+                <span class="currency">£</span>
+                <span class="amount">450</span>
+              </div>
+            </div>
+            <ul class="pricing-features">
+              <li><i class="fas fa-camera"></i>1x Shoot (up to 3hrs, local)</li>
+              <li><i class="fas fa-video"></i>1x Edited Video (up to 90 sec)</li>
+              <li><i class="fas fa-cut"></i>2x Social Media Cutdowns (IG/TikTok)</li>
+              <li><i class="fas fa-clock"></i>Delivered in 7 days</li>
+            </ul>
+            <button class="pricing-btn">Get Started</button>
+          </div>
+
+          <div class="pricing-card featured">
+            <div class="featured-badge">Most Popular</div>
+            <div class="pricing-header">
+              <h3>Growth Pack</h3>
+              <div class="price">
+                <span class="currency">from £</span>
+                <span class="amount">1,200</span>
+                <span class="period">/m</span>
+              </div>
+            </div>
+            <ul class="pricing-features">
+              <li><i class="fas fa-users"></i>2x Shoots per month</li>
+              <li><i class="fas fa-mobile-alt"></i>6x Edited Reels/TikToks</li>
+              <li>
+                <i class="fas fa-play-circle"></i>1x Longer Video (YouTube vlog, recap, promo)
+              </li>
+              <li><i class="fas fa-phone"></i>Content Strategy Call (30 mins)</li>
+            </ul>
+            <button class="pricing-btn">Get Started</button>
+          </div>
+
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <h3>Full Campaign Pack</h3>
+              <div class="price">
+                <span class="pricing-contact">Contact for pricing</span>
+              </div>
+            </div>
+            <ul class="pricing-features">
+              <li><i class="fas fa-calendar-check"></i>4x Shoots per month</li>
+              <li><i class="fas fa-mobile-alt"></i>12x Edited Reels/TikToks</li>
+              <li><i class="fas fa-video"></i>2x Longer Videos (music video, product feature)</li>
+              <li><i class="fas fa-calendar-alt"></i>Full Content Calendar</li>
+              <li><i class="fas fa-share-alt"></i>Social Media Posting & Strategy</li>
+            </ul>
+            <button class="pricing-btn">Get Started</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Me Section -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Get In Touch</h2>
+          <p class="section-subtitle">
+            Let's collaborate on your next project or discuss content opportunities
+          </p>
+        </div>
+
+        <div class="contact-content">
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-details">
+                <h3>Email</h3>
+                <p>hello@sowhatvisuals.com</p>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="contact-details">
+                <h3>Phone</h3>
+                <p>+44 (0)7XXX XXX XXX</p>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-details">
+                <h3>Location</h3>
+                <p>United Kingdom</p>
+              </div>
+            </div>
+
+            <div class="social-links">
+              <h3>Follow My Work</h3>
+              <div class="social-icons">
+                <a
+                  href="https://instagram.com/sowhatvisuals"
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  <i class="fab fa-instagram"></i>
+                </a>
+                <a
+                  href="https://facebook.com/sowhatvisuals"
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  <i class="fab fa-facebook"></i>
+                </a>
+                <a
+                  href="https://tiktok.com/@sowhatvisuals"
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  <i class="fab fa-tiktok"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <form
+            class="contact-form"
+            id="contact-form"
+            name="contact"
+            method="POST"
+            action="/success.html"
+            data-netlify="true"
+            netlify-honeypot="bot-field">
+            <!-- Hidden bot field for spam protection -->
+            <div style="display: none">
+              <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+            </div>
+
+            <div class="form-group">
+              <label for="name">Full Name *</label>
+              <input type="text" id="name" name="name" autocomplete="name" required />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" autocomplete="email" required />
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message *</label>
+              <textarea id="message" name="message" rows="6" autocomplete="off" required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">
+              <i class="fas fa-paper-plane"></i>
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+      <div class="lightbox-content">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-media">
+          <img id="lightbox-image" src="" alt="" />
+          <video id="lightbox-video" controls>
+            <source src="" type="video/mp4" />
+          </video>
+        </div>
+        <div class="lightbox-nav">
+          <button class="lightbox-prev"><i class="fas fa-chevron-left"></i></button>
+          <button class="lightbox-next"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+  </body>
+</html>

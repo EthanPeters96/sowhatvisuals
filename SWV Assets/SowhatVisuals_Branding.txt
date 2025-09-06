@@ -1,0 +1,9 @@
+SowhatVisuals Branding
+
+Brand Colours:
+- Black: #000000
+- White: #FFFFFF
+
+Fonts (Google Fonts):
+- Montserrat Bold
+- Montserrat ExtraBold
