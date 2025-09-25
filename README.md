@@ -1,5 +1,7 @@
 # SowhatVisuals Portfolio Website
 
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/ec2f0079b88148f180ce0034d8329d38)](https://app.codacy.com/gh/EthanPeters96/sowhatvisuals/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+
 A modern, minimalist portfolio website for Gyles Belgrave (SowhatVisuals) - Videographer & Content Creator.
 
 ## Features

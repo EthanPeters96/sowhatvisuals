@@ -3,30 +3,103 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sowhat!Visuals | Gyles Belgrave - Videographer & Content Creator</title>
+    <title>Sowhat!Visuals | Gyles Belgrave - Professional Videographer & Content Creator</title>
     <meta
       name="description"
-      content="Sowhat!Visuals - Cinematic videography and content creation by Gyles Belgrave. Specializing in social media content, brand marketing, and storytelling visuals." />
+      content="Sowhat!Visuals - Professional cinematic videography and content creation by Gyles Belgrave. Specializing in music videos, brand commercials, social media content, and storytelling visuals. Based in UK." />
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="SWV Assets/logos /Sowhatvisuals logo.png" />
-    <link rel="shortcut icon" type="image/png" href="SWV Assets/logos /Sowhatvisuals logo.png" />
-    <link rel="apple-touch-icon" href="SWV Assets/logos /Sowhatvisuals logo.png" />
+    <!-- Enhanced SEO Meta Tags -->
+    <meta
+      name="keywords"
+      content="videographer, content creator, music videos, brand commercials, social media content, UK videographer, Gyles Belgrave, SowhatVisuals" />
+    <meta name="author" content="Gyles Belgrave" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://sowhatvisuals.com" />
 
-    <!-- Google Fonts -->
+    <!-- Resource Preconnect Hints for Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sowhatvisuals.com" />
+    <meta
+      property="og:title"
+      content="Sowhat!Visuals | Professional Videographer & Content Creator" />
+    <meta
+      property="og:description"
+      content="Professional cinematic videography and content creation by Gyles Belgrave. Specializing in music videos, brand commercials, and social media content." />
+    <meta
+      property="og:image"
+      content="https://sowhatvisuals.com/assets/logos/sowhatvisuals-logo.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://sowhatvisuals.com" />
+    <meta
+      property="twitter:title"
+      content="Sowhat!Visuals | Professional Videographer & Content Creator" />
+    <meta
+      property="twitter:description"
+      content="Professional cinematic videography and content creation by Gyles Belgrave." />
+    <meta
+      property="twitter:image"
+      content="https://sowhatvisuals.com/assets/logos/sowhatvisuals-logo.png" />
+
+    <!-- Performance & Security -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="msapplication-TileColor" content="#000000" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/logos/sowhatvisuals-logo.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/logos/sowhatvisuals-logo.png" />
+    <link rel="shortcut icon" type="image/png" href="assets/logos/sowhatvisuals-logo.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/logos/sowhatvisuals-logo.png" />
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json" />
+
+    <!-- Preconnect to external domains for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+
+    <!-- Google Fonts with display optimization -->
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&display=swap"
       rel="stylesheet" />
 
+    <!-- Critical CSS (inline small amount) -->
+    <style>
+      body {
+        font-family: 'Montserrat', sans-serif;
+        background-color: #000;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
+      .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        background-color: transparent;
+        transition: all 0.3s ease;
+      }
+    </style>
+
     <!-- CSS -->
     <link rel="stylesheet" href="styles.css" />
 
-    <!-- Font Awesome for Icons -->
+    <!-- Font Awesome for Icons with defer -->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      media="print"
+      onload="this.media='all'" />
   </head>
   <body>
     <!-- Navigation -->
@@ -57,14 +130,10 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
       <div class="hero-video-container">
-        <video id="hero-video" autoplay muted loop playsinline>
-          <source src="assets/videos/showreel-placeholder.mp4" type="video/mp4" />
-          <!-- Placeholder background -->
+        <video id="hero-video" autoplay muted loop playsinline preload="auto">
+          <source src="assets/videos/show-reel-main-page.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
         </video>
-        <div class="hero-video-placeholder">
-          <i class="fas fa-play-circle"></i>
-          <p>Video Showreel Placeholder</p>
-        </div>
       </div>
       <div class="hero-overlay">
         <div class="hero-content">
@@ -149,7 +218,7 @@
           </div>
           <div class="about-image">
             <img
-              src="SWV Assets/logos /Sowhatvisuals logo.png"
+              src="assets/logos/sowhatvisuals-logo.png"
               alt="SowhatVisuals Brand Logo"
               class="about-logo" />
           </div>
@@ -170,78 +239,180 @@
 
         <div class="work-filters">
           <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="video">Video</button>
           <button class="filter-btn" data-filter="photo">Photo</button>
+          <button class="filter-btn" data-filter="sports">Sports & Fitness</button>
+          <button class="filter-btn" data-filter="wedding">Wedding</button>
+          <button class="filter-btn" data-filter="portrait">Portrait</button>
+          <button class="filter-btn" data-filter="creative">Creative</button>
         </div>
 
         <div class="work-grid">
-          <!-- Video Work Items -->
-          <div class="work-item video" data-category="video">
+          <!-- Sports/Fitness Work Items -->
+          <div class="work-item photo sports" data-category="photo">
             <div class="work-image">
-              <div class="image-placeholder">
-                <i class="fas fa-video"></i>
-                <p>Music Video Project</p>
-              </div>
+              <picture>
+                <source
+                  srcset="assets/images/Athlete_Doing_Exercises_original_535207.webp"
+                  type="image/webp" />
+                <img
+                  src="assets/images/Athlete_Doing_Exercises_original_535207.webp"
+                  alt="Athlete doing exercises - professional sports photography"
+                  loading="lazy"
+                  decoding="async"
+                  class="work-img" />
+              </picture>
               <div class="work-overlay">
                 <div class="work-info">
-                  <h3>Music Video Project</h3>
-                  <p>High-energy music video production</p>
-                  <button class="view-btn" data-type="video" data-src="assets/videos/project1.mp4">
-                    <i class="fas fa-play"></i>
+                  <h3>Athletic Training</h3>
+                  <p>Professional sports and fitness photography</p>
+                  <button
+                    class="view-btn"
+                    data-type="image"
+                    data-src="assets/images/Athlete_Doing_Exercises_original_535207.webp">
+                    <i class="fas fa-search-plus"></i>
                   </button>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="work-item video" data-category="video">
+          <div class="work-item photo sports" data-category="photo">
             <div class="work-image">
-              <div class="image-placeholder">
-                <i class="fas fa-video"></i>
-                <p>Brand Commercial</p>
-              </div>
+              <picture>
+                <source
+                  srcset="assets/images/Boxer_Hitting_A_Punching_Bag_original_1567819.webp"
+                  type="image/webp" />
+                <img
+                  src="assets/images/Boxer_Hitting_A_Punching_Bag_original_1567819.webp"
+                  alt="Boxer hitting punching bag - dynamic sports photography"
+                  loading="lazy"
+                  decoding="async"
+                  class="work-img" />
+              </picture>
               <div class="work-overlay">
                 <div class="work-info">
-                  <h3>Brand Commercial</h3>
-                  <p>Commercial content for social media</p>
-                  <button class="view-btn" data-type="video" data-src="assets/videos/project2.mp4">
-                    <i class="fas fa-play"></i>
+                  <h3>Boxing Training</h3>
+                  <p>High-energy boxing and combat sports</p>
+                  <button
+                    class="view-btn"
+                    data-type="image"
+                    data-src="assets/images/Boxer_Hitting_A_Punching_Bag_original_1567819.webp">
+                    <i class="fas fa-search-plus"></i>
                   </button>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="work-item video" data-category="video">
+          <div class="work-item photo sports" data-category="photo">
             <div class="work-image">
-              <div class="image-placeholder">
-                <i class="fas fa-video"></i>
-                <p>Documentary Style</p>
-              </div>
+              <picture>
+                <source
+                  srcset="
+                    assets/images/Fitness_Coach_Evaluating_A_Young_Athlete_original_1612810.webp
+                  "
+                  type="image/webp" />
+                <img
+                  src="assets/images/Fitness_Coach_Evaluating_A_Young_Athlete_original_1612810.webp"
+                  alt="Fitness coach evaluating young athlete - professional training photography"
+                  loading="lazy"
+                  decoding="async"
+                  class="work-img" />
+              </picture>
               <div class="work-overlay">
                 <div class="work-info">
-                  <h3>Documentary Style</h3>
-                  <p>Behind-the-scenes content creation</p>
-                  <button class="view-btn" data-type="video" data-src="assets/videos/project3.mp4">
-                    <i class="fas fa-play"></i>
+                  <h3>Fitness Coaching</h3>
+                  <p>Professional training and coaching sessions</p>
+                  <button
+                    class="view-btn"
+                    data-type="image"
+                    data-src="assets/images/Fitness_Coach_Evaluating_A_Young_Athlete_original_1612810.webp">
+                    <i class="fas fa-search-plus"></i>
                   </button>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Photo Work Items -->
-          <div class="work-item photo" data-category="photo">
+          <!-- Wedding Work Items -->
+          <div class="work-item photo wedding" data-category="photo">
             <div class="work-image">
-              <div class="image-placeholder">
-                <i class="fas fa-camera"></i>
-                <p>Portrait Session</p>
+              <picture>
+                <source
+                  srcset="assets/images/Bridal_Posy_On_A_Cushion_original_856065.webp"
+                  type="image/webp" />
+                <img
+                  src="assets/images/Bridal_Posy_On_A_Cushion_original_856065.webp"
+                  alt="Bridal posy on cushion - elegant wedding photography"
+                  loading="lazy"
+                  decoding="async"
+                  class="work-img" />
+              </picture>
+              <div class="work-overlay">
+                <div class="work-info">
+                  <h3>Bridal Details</h3>
+                  <p>Elegant wedding and bridal photography</p>
+                  <button
+                    class="view-btn"
+                    data-type="image"
+                    data-src="assets/images/Bridal_Posy_On_A_Cushion_original_856065.webp">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                </div>
               </div>
+            </div>
+          </div>
+
+          <div class="work-item photo wedding" data-category="photo">
+            <div class="work-image">
+              <picture>
+                <source
+                  srcset="assets/images/Enjoying_Honeymoon_original_388460.webp"
+                  type="image/webp" />
+                <img
+                  src="assets/images/Enjoying_Honeymoon_original_388460.webp"
+                  alt="Couple enjoying honeymoon - romantic wedding photography"
+                  loading="lazy"
+                  decoding="async"
+                  class="work-img" />
+              </picture>
+              <div class="work-overlay">
+                <div class="work-info">
+                  <h3>Romantic Couples</h3>
+                  <p>Intimate wedding and couple photography</p>
+                  <button
+                    class="view-btn"
+                    data-type="image"
+                    data-src="assets/images/Enjoying_Honeymoon_original_388460.webp">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Portrait Work Items -->
+          <div class="work-item photo portrait" data-category="photo">
+            <div class="work-image">
+              <picture>
+                <source
+                  srcset="assets/images/Curly_Girl_With_Toothy_Smile_original_391177.webp"
+                  type="image/webp" />
+                <img
+                  src="assets/images/Curly_Girl_With_Toothy_Smile_original_391177.webp"
+                  alt="Curly girl with toothy smile - professional portrait photography"
+                  loading="lazy"
+                  decoding="async"
+                  class="work-img" />
+              </picture>
               <div class="work-overlay">
                 <div class="work-info">
                   <h3>Portrait Session</h3>
-                  <p>Professional artist photography</p>
-                  <button class="view-btn" data-type="image" data-src="assets/images/project1.jpg">
+                  <p>Professional portrait photography</p>
+                  <button
+                    class="view-btn"
+                    data-type="image"
+                    data-src="assets/images/Curly_Girl_With_Toothy_Smile_original_391177.webp">
                     <i class="fas fa-search-plus"></i>
                   </button>
                 </div>
@@ -249,17 +420,27 @@
             </div>
           </div>
 
-          <div class="work-item photo" data-category="photo">
+          <div class="work-item photo fitness" data-category="photo">
             <div class="work-image">
-              <div class="image-placeholder">
-                <i class="fas fa-camera"></i>
-                <p>Event Coverage</p>
-              </div>
+              <picture>
+                <source
+                  srcset="assets/images/Figure_While_Performing_Exercises_original_1646822.webp"
+                  type="image/webp" />
+                <img
+                  src="assets/images/Figure_While_Performing_Exercises_original_1646822.webp"
+                  alt="Figure performing exercises - fitness photography"
+                  loading="lazy"
+                  decoding="async"
+                  class="work-img" />
+              </picture>
               <div class="work-overlay">
                 <div class="work-info">
-                  <h3>Event Coverage</h3>
-                  <p>Live event photography</p>
-                  <button class="view-btn" data-type="image" data-src="assets/images/project2.jpg">
+                  <h3>Fitness Training</h3>
+                  <p>Dynamic fitness and exercise photography</p>
+                  <button
+                    class="view-btn"
+                    data-type="image"
+                    data-src="assets/images/Figure_While_Performing_Exercises_original_1646822.webp">
                     <i class="fas fa-search-plus"></i>
                   </button>
                 </div>
@@ -267,17 +448,337 @@
             </div>
           </div>
 
-          <div class="work-item photo" data-category="photo">
+          <div class="work-item photo sports" data-category="photo">
             <div class="work-image">
-              <div class="image-placeholder">
-                <i class="fas fa-camera"></i>
-                <p>Brand Shoot</p>
-              </div>
+              <picture>
+                <source
+                  srcset="assets/images/Boxer_Man_Preparing_For_Boxing_original_1567732.webp"
+                  type="image/webp" />
+                <img
+                  src="assets/images/Boxer_Man_Preparing_For_Boxing_original_1567732.webp"
+                  alt="Boxer man preparing for boxing - professional sports photography"
+                  loading="lazy"
+                  decoding="async"
+                  class="work-img" />
+              </picture>
               <div class="work-overlay">
                 <div class="work-info">
-                  <h3>Brand Shoot</h3>
-                  <p>Product and lifestyle photography</p>
-                  <button class="view-btn" data-type="image" data-src="assets/images/project3.jpg">
+                  <h3>Boxing Preparation</h3>
+                  <p>Intense boxing training documentation</p>
+                  <button
+                    class="view-btn"
+                    data-type="image"
+                    data-src="assets/images/Boxer_Man_Preparing_For_Boxing_original_1567732.webp">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="work-item photo sports" data-category="photo">
+            <div class="work-image">
+              <picture>
+                <source
+                  srcset="assets/images/Athlete_Preparing_For_Training_original_467612.webp"
+                  type="image/webp" />
+                <img
+                  src="assets/images/Athlete_Preparing_For_Training_original_467612.webp"
+                  alt="Athlete preparing for training - professional sports photography"
+                  loading="lazy"
+                  decoding="async"
+                  class="work-img" />
+              </picture>
+              <div class="work-overlay">
+                <div class="work-info">
+                  <h3>Athletic Preparation</h3>
+                  <p>Pre-training athlete documentation</p>
+                  <button
+                    class="view-btn"
+                    data-type="image"
+                    data-src="assets/images/Athlete_Preparing_For_Training_original_467612.webp">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="work-item photo creative" data-category="photo">
+            <div class="work-image">
+              <picture>
+                <source
+                  srcset="assets/images/Burning_Bengal_Lights_original_515401.webp"
+                  type="image/webp" />
+                <img
+                  src="assets/images/Burning_Bengal_Lights_original_515401.webp"
+                  alt="Burning bengal lights - creative artistic photography"
+                  loading="lazy"
+                  decoding="async"
+                  class="work-img" />
+              </picture>
+              <div class="work-overlay">
+                <div class="work-info">
+                  <h3>Creative Lighting</h3>
+                  <p>Artistic and creative photography</p>
+                  <button
+                    class="view-btn"
+                    data-type="image"
+                    data-src="assets/images/Burning_Bengal_Lights_original_515401.webp">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="work-item photo sports" data-category="photo">
+            <div class="work-image">
+              <picture>
+                <source
+                  srcset="assets/images/Sportswoman_Lifting_Kettlebell_original_585410.webp"
+                  type="image/webp" />
+                <img
+                  src="assets/images/Sportswoman_Lifting_Kettlebell_original_585410.webp"
+                  alt="Sportswoman lifting kettlebell - professional fitness photography"
+                  loading="lazy"
+                  decoding="async"
+                  class="work-img" />
+              </picture>
+              <div class="work-overlay">
+                <div class="work-info">
+                  <h3>Kettlebell Training</h3>
+                  <p>Dynamic fitness and strength training</p>
+                  <button
+                    class="view-btn"
+                    data-type="image"
+                    data-src="assets/images/Sportswoman_Lifting_Kettlebell_original_585410.webp">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="work-item photo wedding" data-category="photo">
+            <div class="work-image">
+              <picture>
+                <source
+                  srcset="assets/images/Wedding_Bouquets_original_430517.webp"
+                  type="image/webp" />
+                <img
+                  src="assets/images/Wedding_Bouquets_original_430517.webp"
+                  alt="Beautiful wedding bouquets - elegant wedding photography"
+                  loading="lazy"
+                  decoding="async"
+                  class="work-img" />
+              </picture>
+              <div class="work-overlay">
+                <div class="work-info">
+                  <h3>Wedding Bouquets</h3>
+                  <p>Elegant wedding flower arrangements</p>
+                  <button
+                    class="view-btn"
+                    data-type="image"
+                    data-src="assets/images/Wedding_Bouquets_original_430517.webp">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="work-item photo sports" data-category="photo">
+            <div class="work-image">
+              <picture>
+                <source
+                  srcset="assets/images/Man_Training_Biceps_With_Dumbbells_original_1567541.webp"
+                  type="image/webp" />
+                <img
+                  src="assets/images/Man_Training_Biceps_With_Dumbbells_original_1567541.webp"
+                  alt="Man training biceps with dumbbells - professional gym photography"
+                  loading="lazy"
+                  decoding="async"
+                  class="work-img" />
+              </picture>
+              <div class="work-overlay">
+                <div class="work-info">
+                  <h3>Strength Training</h3>
+                  <p>Professional gym and weight training</p>
+                  <button
+                    class="view-btn"
+                    data-type="image"
+                    data-src="assets/images/Man_Training_Biceps_With_Dumbbells_original_1567541.webp">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="work-item photo sports" data-category="photo">
+            <div class="work-image">
+              <picture>
+                <source
+                  srcset="assets/images/Sportsman_Getting_Ready_For_Dash_original_886886.webp"
+                  type="image/webp" />
+                <img
+                  src="assets/images/Sportsman_Getting_Ready_For_Dash_original_886886.webp"
+                  alt="Sportsman getting ready for dash - athletic photography"
+                  loading="lazy"
+                  decoding="async"
+                  class="work-img" />
+              </picture>
+              <div class="work-overlay">
+                <div class="work-info">
+                  <h3>Sprint Preparation</h3>
+                  <p>Athletic performance and sprint training</p>
+                  <button
+                    class="view-btn"
+                    data-type="image"
+                    data-src="assets/images/Sportsman_Getting_Ready_For_Dash_original_886886.webp">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="work-item photo sports" data-category="photo">
+            <div class="work-image">
+              <picture>
+                <source
+                  srcset="assets/images/Intense_Fight_In_Boxing_Ring_original_397185.webp"
+                  type="image/webp" />
+                <img
+                  src="assets/images/Intense_Fight_In_Boxing_Ring_original_397185.webp"
+                  alt="Intense fight in boxing ring - professional boxing photography"
+                  loading="lazy"
+                  decoding="async"
+                  class="work-img" />
+              </picture>
+              <div class="work-overlay">
+                <div class="work-info">
+                  <h3>Boxing Match</h3>
+                  <p>High-intensity boxing and combat sports</p>
+                  <button
+                    class="view-btn"
+                    data-type="image"
+                    data-src="assets/images/Intense_Fight_In_Boxing_Ring_original_397185.webp">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="work-item photo fitness" data-category="photo">
+            <div class="work-image">
+              <picture>
+                <source
+                  srcset="
+                    assets/images/Friends_At_The_Gym_Looking_At_The_Camera_original_1612839.webp
+                  "
+                  type="image/webp" />
+                <img
+                  src="assets/images/Friends_At_The_Gym_Looking_At_The_Camera_original_1612839.webp"
+                  alt="Friends at the gym looking at camera - group fitness photography"
+                  loading="lazy"
+                  decoding="async"
+                  class="work-img" />
+              </picture>
+              <div class="work-overlay">
+                <div class="work-info">
+                  <h3>Group Fitness</h3>
+                  <p>Team training and group fitness sessions</p>
+                  <button
+                    class="view-btn"
+                    data-type="image"
+                    data-src="assets/images/Friends_At_The_Gym_Looking_At_The_Camera_original_1612839.webp">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="work-item photo wedding" data-category="photo">
+            <div class="work-image">
+              <picture>
+                <source
+                  srcset="assets/images/Wedding_Promenade_original_388327.webp"
+                  type="image/webp" />
+                <img
+                  src="assets/images/Wedding_Promenade_original_388327.webp"
+                  alt="Wedding promenade - romantic wedding photography"
+                  loading="lazy"
+                  decoding="async"
+                  class="work-img" />
+              </picture>
+              <div class="work-overlay">
+                <div class="work-info">
+                  <h3>Wedding Walk</h3>
+                  <p>Romantic wedding ceremony moments</p>
+                  <button
+                    class="view-btn"
+                    data-type="image"
+                    data-src="assets/images/Wedding_Promenade_original_388327.webp">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="work-item photo sports" data-category="photo">
+            <div class="work-image">
+              <picture>
+                <source
+                  srcset="assets/images/Professional_Boxers_Sparring_original_886877.webp"
+                  type="image/webp" />
+                <img
+                  src="assets/images/Professional_Boxers_Sparring_original_886877.webp"
+                  alt="Professional boxers sparring - dynamic boxing photography"
+                  loading="lazy"
+                  decoding="async"
+                  class="work-img" />
+              </picture>
+              <div class="work-overlay">
+                <div class="work-info">
+                  <h3>Boxing Sparring</h3>
+                  <p>Professional boxing training sessions</p>
+                  <button
+                    class="view-btn"
+                    data-type="image"
+                    data-src="assets/images/Professional_Boxers_Sparring_original_886877.webp">
+                    <i class="fas fa-search-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="work-item photo sports" data-category="photo">
+            <div class="work-image">
+              <picture>
+                <source
+                  srcset="assets/images/Sportsman_In_Boxing_Gloves_original_783196.webp"
+                  type="image/webp" />
+                <img
+                  src="assets/images/Sportsman_In_Boxing_Gloves_original_783196.webp"
+                  alt="Sportsman in boxing gloves - professional boxing photography"
+                  loading="lazy"
+                  decoding="async"
+                  class="work-img" />
+              </picture>
+              <div class="work-overlay">
+                <div class="work-info">
+                  <h3>Boxing Portrait</h3>
+                  <p>Professional boxer portrait session</p>
+                  <button
+                    class="view-btn"
+                    data-type="image"
+                    data-src="assets/images/Sportsman_In_Boxing_Gloves_original_783196.webp">
                     <i class="fas fa-search-plus"></i>
                   </button>
                 </div>
@@ -554,7 +1055,7 @@
               </div>
               <div class="contact-logo">
                 <img
-                  src="SWV Assets/logos /Sowhatvisuals logo.png"
+                  src="assets/logos/sowhatvisuals-logo.png"
                   alt="SowhatVisuals Logo"
                   class="contact-logo-img" />
               </div>
@@ -655,7 +1156,28 @@
       </div>
     </footer>
 
-    <!-- JavaScript -->
-    <script src="script.js"></script>
+    <!-- JavaScript with performance optimizations -->
+    <script src="script.js" defer></script>
+
+    <!-- Performance monitoring (optional, remove if not needed) -->
+    <script>
+      // Basic performance monitoring
+      window.addEventListener('load', function () {
+        if ('performance' in window) {
+          const perfData = performance.getEntriesByType('navigation')[0]
+          console.log('Page load time:', perfData.loadEventEnd - perfData.fetchStart, 'ms')
+        }
+      })
+
+      // Basic error tracking
+      window.addEventListener('error', function (e) {
+        console.error('JavaScript error:', e.error)
+      })
+
+      // Enhanced security: Disable eval and similar functions
+      window.eval = function () {
+        throw new Error('eval() is disabled for security reasons')
+      }
+    </script>
   </body>
 </html>

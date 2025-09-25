@@ -1,3 +1,6 @@
+/* eslint-env browser */
+/* global document, window, console, setTimeout, fetch, URLSearchParams, FormData, Image, IntersectionObserver */
+
 // DOM Content Loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all functionality
@@ -7,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initLightbox();
     initContactForm();
     initAnimations();
+    initImageOptimization(); // Add image optimization
 });
 
 // Navigation functionality
@@ -141,9 +145,25 @@ function initWorkFilters() {
             const filterValue = this.getAttribute('data-filter');
 
             workItems.forEach(item => {
-                if (filterValue === 'all' || item.classList.contains(filterValue)) {
+                // Handle multiple class filtering
+                const shouldShow = filterValue === 'all' ||
+                                  item.classList.contains(filterValue) ||
+                                  (filterValue === 'photo' && (
+                                      item.classList.contains('sports') ||
+                                      item.classList.contains('wedding') ||
+                                      item.classList.contains('portrait') ||
+                                      item.classList.contains('fitness') ||
+                                      item.classList.contains('creative')
+                                  ));
+
+                if (shouldShow) {
                     item.style.display = 'block';
                     item.classList.add('fade-in');
+                    // Trigger lazy loading for newly visible images
+                    const img = item.querySelector('.work-img');
+                    if (img && !img.hasAttribute('data-loaded')) {
+                        loadImage(img);
+                    }
                 } else {
                     item.style.display = 'none';
                     item.classList.remove('fade-in');
@@ -151,6 +171,43 @@ function initWorkFilters() {
             });
         });
     });
+}
+
+// Enhanced image loading function
+function loadImage(img) {
+    if (img.dataset.src && !img.hasAttribute('data-loaded')) {
+        const container = img.closest('.work-image');
+
+        // Add loading state
+        if (container) {
+            container.classList.add('loading');
+        }
+        img.setAttribute('data-loading', 'true');
+
+        // Create preloader
+        const imageLoader = new Image();
+
+        imageLoader.onload = () => {
+            img.src = imageLoader.src;
+            img.setAttribute('data-loaded', 'true');
+            img.removeAttribute('data-loading');
+            img.style.opacity = '1';
+
+            if (container) {
+                container.classList.remove('loading');
+            }
+        };
+
+        imageLoader.onerror = () => {
+            console.warn('Failed to load image:', img.dataset.src);
+            if (container) {
+                container.classList.remove('loading');
+            }
+            img.removeAttribute('data-loading');
+        };
+
+        imageLoader.src = img.dataset.src;
+    }
 }
 
 // Lightbox functionality
@@ -295,14 +352,6 @@ function initContactForm() {
 
                     // Reset form
                     contactForm.reset();
-
-                    // Log form data to console for development
-                    console.log('Form submitted in development mode:', {
-                        name: name,
-                        email: email,
-                        budget: budget,
-                        projectDetails: projectDetails
-                    });
                 }, 1500);
             } else {
                 // For production (Netlify), submit via fetch to handle properly
@@ -323,14 +372,18 @@ function initContactForm() {
                         contactForm.reset();
                     })
                     .catch((error) => {
-                        console.error('Error:', error);
+                        console.error('Network error:', error);
 
                         // Reset button
                         submitBtn.innerHTML = originalHTML;
                         submitBtn.disabled = false;
 
-                        // Show error message
-                        showNotification('There was an error sending your message. Please try again.', 'error');
+                        // Show enhanced error message with retry suggestion
+                        const errorMessage = error.name === 'TypeError'
+                            ? 'Network connection failed. Please check your internet connection and try again.'
+                            : 'There was an error sending your message. Please try again or contact us directly.';
+
+                        showNotification(errorMessage, 'error');
                     });
             }
             showNotification('Sending your message...', 'info');
@@ -538,3 +591,100 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// Advanced Image Optimization System
+function initImageOptimization() {
+    setupLazyLoading();
+    preloadCriticalImages();
+    optimizeImageLoading();
+}
+
+// Intersection Observer for Lazy Loading
+function setupLazyLoading() {
+    const images = document.querySelectorAll('.work-item img');
+
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                const container = img.closest('.work-image');
+
+                // Skip if already loaded
+                if (img.hasAttribute('data-loaded')) {
+                    observer.unobserve(img);
+                    return;
+                }
+
+                // Start loading animation
+                if (container) {
+                    container.classList.add('loading');
+                }
+                img.setAttribute('data-loading', 'true');
+
+                // Image already has source (direct WebP), just mark as loaded
+                img.setAttribute('data-loaded', 'true');
+                img.removeAttribute('data-loading');
+                img.style.opacity = '1';
+                if (container) {
+                    container.classList.remove('loading');
+                }
+
+                observer.unobserve(img);
+            }
+        });
+    }, {
+        rootMargin: '50px',
+        threshold: 0.1
+    });
+
+    images.forEach(img => {
+        // Only observe images that aren't already loaded
+        if (!img.hasAttribute('data-loaded')) {
+            imageObserver.observe(img);
+        }
+    });
+}
+
+// Preload critical images (first few visible)
+function preloadCriticalImages() {
+    const firstImages = document.querySelectorAll('.work-item:nth-child(-n+6) img');
+
+    firstImages.forEach(img => {
+        const container = img.closest('.work-image');
+
+        if (container) {
+            container.classList.add('loading');
+        }
+        img.setAttribute('data-loading', 'true');
+
+        // Since images are direct WebP, just mark them as loaded
+        img.setAttribute('data-loaded', 'true');
+        img.removeAttribute('data-loading');
+        img.style.opacity = '1';
+        if (container) {
+            container.classList.remove('loading');
+        }
+    });
+}
+
+// Optimize image loading behavior
+function optimizeImageLoading() {
+    const images = document.querySelectorAll('.work-item img');
+
+    images.forEach(img => {
+        // Add loading optimization attributes
+        img.setAttribute('decoding', 'async');
+        img.setAttribute('loading', 'lazy');
+
+        // Handle image load events
+        img.addEventListener('load', function() {
+            this.style.opacity = '1';
+            this.setAttribute('data-loaded', 'true');
+        });
+
+        img.addEventListener('error', function() {
+            this.style.opacity = '0.5';
+            console.warn('Image failed to load:', this.src);
+        });
+    });
+}

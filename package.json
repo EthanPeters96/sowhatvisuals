@@ -2,13 +2,19 @@
   "name": "sowhatvisuals-website",
   "version": "1.0.0",
   "description": "SowhatVisuals portfolio website",
+  "type": "module",
   "main": "script.js",
   "scripts": {
-    "lint": "eslint script.js"
+    "lint": "eslint script.js",
+    "lint:fix": "eslint script.js --fix",
+    "lint:codacy": "eslint script.js -c .eslintrc.js",
+    "validate": "npm run lint",
+    "dev": "python3 -m http.server 8000",
+    "test": "npm run lint && echo 'All checks passed!'"
   },
   "devDependencies": {
     "@eslint/js": "^9.35.0",
     "eslint": "^9.35.0",
-    "globals": "^16.3.0"
+    "globals": "^16.4.0"
   }
 }
