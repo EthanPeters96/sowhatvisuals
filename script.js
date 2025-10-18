@@ -22,8 +22,9 @@ function initNavigation() {
 
     // Mobile menu toggle
     hamburger.addEventListener('click', function() {
-        hamburger.classList.toggle('active');
+        const isExpanded = hamburger.classList.toggle('active');
         navMenu.classList.toggle('active');
+        hamburger.setAttribute('aria-expanded', isExpanded);
     });
 
     // Close mobile menu when clicking on links
@@ -31,6 +32,7 @@ function initNavigation() {
         link.addEventListener('click', function() {
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
         });
     });
 
@@ -137,77 +139,69 @@ function initWorkFilters() {
 
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
-            // Remove active class from all buttons
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            // Add active class to clicked button
-            this.classList.add('active');
-
             const filterValue = this.getAttribute('data-filter');
-
-            workItems.forEach(item => {
-                // Handle multiple class filtering
-                const shouldShow = filterValue === 'all' ||
-                                  item.classList.contains(filterValue) ||
-                                  (filterValue === 'photo' && (
-                                      item.classList.contains('sports') ||
-                                      item.classList.contains('wedding') ||
-                                      item.classList.contains('portrait') ||
-                                      item.classList.contains('fitness') ||
-                                      item.classList.contains('creative')
-                                  ));
-
-                if (shouldShow) {
-                    item.style.display = 'block';
-                    item.classList.add('fade-in');
-                    // Trigger lazy loading for newly visible images
-                    const img = item.querySelector('.work-img');
-                    if (img && !img.hasAttribute('data-loaded')) {
-                        loadImage(img);
-                    }
-                } else {
-                    item.style.display = 'none';
-                    item.classList.remove('fade-in');
-                }
-            });
+            updateActiveFilterButton(filterButtons, this);
+            applyFilterToWorkItems(workItems, filterValue);
         });
     });
 }
 
-// Enhanced image loading function
-function loadImage(img) {
-    if (img.dataset.src && !img.hasAttribute('data-loaded')) {
-        const container = img.closest('.work-image');
+// Helper: Update active state of filter buttons
+function updateActiveFilterButton(buttons, activeButton) {
+    buttons.forEach(btn => btn.classList.remove('active'));
+    activeButton.classList.add('active');
+}
 
-        // Add loading state
-        if (container) {
-            container.classList.add('loading');
+// Helper: Apply filter to work items
+function applyFilterToWorkItems(items, filterValue) {
+    items.forEach(item => {
+        const shouldShow = shouldShowWorkItem(item, filterValue);
+
+        if (shouldShow) {
+            showWorkItem(item);
+        } else {
+            hideWorkItem(item);
         }
-        img.setAttribute('data-loading', 'true');
+    });
+}
 
-        // Create preloader
-        const imageLoader = new Image();
-
-        imageLoader.onload = () => {
-            img.src = imageLoader.src;
-            img.setAttribute('data-loaded', 'true');
-            img.removeAttribute('data-loading');
-            img.style.opacity = '1';
-
-            if (container) {
-                container.classList.remove('loading');
-            }
-        };
-
-        imageLoader.onerror = () => {
-            console.warn('Failed to load image:', img.dataset.src);
-            if (container) {
-                container.classList.remove('loading');
-            }
-            img.removeAttribute('data-loading');
-        };
-
-        imageLoader.src = img.dataset.src;
+// Helper: Determine if work item should be shown
+function shouldShowWorkItem(item, filterValue) {
+    if (filterValue === 'all') {
+        return true;
     }
+
+    if (item.classList.contains(filterValue)) {
+        return true;
+    }
+
+    // Photo category includes multiple sub-categories
+    const photoCategories = ['sports', 'wedding', 'portrait', 'fitness', 'creative'];
+    if (filterValue === 'photo') {
+        return photoCategories.some(category => item.classList.contains(category));
+    }
+
+    return false;
+}
+
+// Helper: Show work item with animation
+function showWorkItem(item) {
+    item.style.display = 'block';
+    item.classList.add('fade-in');
+
+    // Images are already preloaded and cached, ensure they're visible
+    const img = item.querySelector('.work-img');
+    if (img && !img.hasAttribute('data-cached')) {
+        // Fallback: load image if somehow not cached yet
+        const container = img.closest('.work-image');
+        markImageAsLoaded(img, container);
+    }
+}
+
+// Helper: Hide work item
+function hideWorkItem(item) {
+    item.style.display = 'none';
+    item.classList.remove('fade-in');
 }
 
 // Lightbox functionality
@@ -330,7 +324,6 @@ function initContactForm() {
 
             // Show loading state
             const submitBtn = contactForm.querySelector('.submit-btn');
-            const originalHTML = submitBtn.innerHTML;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             submitBtn.disabled = true;
 
@@ -343,8 +336,8 @@ function initContactForm() {
             if (isLocalhost) {
                 // For local development, simulate form submission
                 setTimeout(() => {
-                    // Reset button
-                    submitBtn.innerHTML = originalHTML;
+                    // Reset button - use textContent for safety
+                    submitBtn.textContent = 'Send Message';
                     submitBtn.disabled = false;
 
                     // Show success message
@@ -361,8 +354,8 @@ function initContactForm() {
                     body: new URLSearchParams(formData).toString()
                 })
                     .then(() => {
-                    // Reset button
-                        submitBtn.innerHTML = originalHTML;
+                    // Reset button - use textContent for safety
+                        submitBtn.textContent = 'Send Message';
                         submitBtn.disabled = false;
 
                         // Show success message
@@ -374,8 +367,8 @@ function initContactForm() {
                     .catch((error) => {
                         console.error('Network error:', error);
 
-                        // Reset button
-                        submitBtn.innerHTML = originalHTML;
+                        // Reset button - use textContent for safety
+                        submitBtn.textContent = 'Send Message';
                         submitBtn.disabled = false;
 
                         // Show enhanced error message with retry suggestion
@@ -408,15 +401,22 @@ function showNotification(message, type = 'info') {
         existingNotification.remove();
     }
 
-    // Create notification element
+    // Create notification element safely
     const notification = document.createElement('div');
     notification.className = `notification ${type}`;
-    notification.innerHTML = `
-        <span>${message}</span>
-        <button class="notification-close">&times;</button>
-    `;
 
-    // Add styles
+    // Create elements safely without innerHTML
+    const messageSpan = document.createElement('span');
+    messageSpan.textContent = message;
+
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'notification-close';
+    closeBtn.innerHTML = '&times;';  // Safe - hardcoded HTML entity
+
+    notification.appendChild(messageSpan);
+    notification.appendChild(closeBtn);
+
+    // Add styles for notification
     notification.style.cssText = `
         position: fixed;
         top: 100px;
@@ -435,8 +435,7 @@ function showNotification(message, type = 'info') {
         animation: slideInRight 0.3s ease-out;
     `;
 
-    // Close button styles
-    const closeBtn = notification.querySelector('.notification-close');
+    // Style close button
     closeBtn.style.cssText = `
         background: none;
         border: none;
@@ -450,7 +449,7 @@ function showNotification(message, type = 'info') {
     // Add to DOM
     document.body.appendChild(notification);
 
-    // Close functionality
+    // Close functionality - use already created closeBtn element
     closeBtn.addEventListener('click', () => notification.remove());
 
     // Auto remove after 5 seconds
@@ -509,23 +508,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Performance optimization
 window.addEventListener('load', function() {
-    // Lazy load images
-    const images = document.querySelectorAll('img[loading="lazy"]');
-
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src || img.src;
-                    img.classList.remove('lazy');
-                    imageObserver.unobserve(img);
-                }
-            });
-        });
-
-        images.forEach(img => imageObserver.observe(img));
-    }
+    // Note: Work section images are now preloaded and cached
+    // Lazy loading is still used for brand section images
 });
 
 // Error handling for missing assets
@@ -592,99 +576,116 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Advanced Image Optimization System
+// Helper: Development-only console logging
+function devLog(...args) {
+    const isDevelopment = window.location.hostname === 'localhost' ||
+                         window.location.hostname === '127.0.0.1' ||
+                         window.location.hostname === '';
+
+    if (isDevelopment) {
+        console.log(...args);
+    }
+}
+
+// Helper: Development-only console warnings
+function devWarn(...args) {
+    const isDevelopment = window.location.hostname === 'localhost' ||
+                         window.location.hostname === '127.0.0.1' ||
+                         window.location.hostname === '';
+
+    if (isDevelopment) {
+        console.warn(...args);
+    }
+}
+
+// Advanced Image Preloading and Caching System
 function initImageOptimization() {
-    setupLazyLoading();
-    preloadCriticalImages();
-    optimizeImageLoading();
+    // Use a slight delay to allow the page to settle before aggressive preloading
+    setTimeout(() => {
+        preloadAndCacheAllImages();
+    }, 1000);
 }
 
-// Intersection Observer for Lazy Loading
-function setupLazyLoading() {
-    const images = document.querySelectorAll('.work-item img');
+// Image cache to prevent reloading
+const imageCache = new Set();
 
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                const container = img.closest('.work-image');
+// Preload and cache all work section images
+function preloadAndCacheAllImages() {
+    const workImages = document.querySelectorAll('.work-item img');
+    let loadedCount = 0;
+    const totalImages = workImages.length;
 
-                // Skip if already loaded
-                if (img.hasAttribute('data-loaded')) {
-                    observer.unobserve(img);
-                    return;
-                }
+    devLog(`Starting preload of ${totalImages} work section images...`);
 
-                // Start loading animation
-                if (container) {
-                    container.classList.add('loading');
-                }
-                img.setAttribute('data-loading', 'true');
-
-                // Image already has source (direct WebP), just mark as loaded
-                img.setAttribute('data-loaded', 'true');
-                img.removeAttribute('data-loading');
-                img.style.opacity = '1';
-                if (container) {
-                    container.classList.remove('loading');
-                }
-
-                observer.unobserve(img);
-            }
-        });
-    }, {
-        rootMargin: '50px',
-        threshold: 0.1
-    });
-
-    images.forEach(img => {
-        // Only observe images that aren't already loaded
-        if (!img.hasAttribute('data-loaded')) {
-            imageObserver.observe(img);
-        }
-    });
-}
-
-// Preload critical images (first few visible)
-function preloadCriticalImages() {
-    const firstImages = document.querySelectorAll('.work-item:nth-child(-n+6) img');
-
-    firstImages.forEach(img => {
+    workImages.forEach((img) => {
         const container = img.closest('.work-image');
+        const imageUrl = img.src;
 
-        if (container) {
-            container.classList.add('loading');
+        // Skip if already cached
+        if (imageCache.has(imageUrl)) {
+            markImageAsLoaded(img, container);
+            return;
         }
-        img.setAttribute('data-loading', 'true');
 
-        // Since images are direct WebP, just mark them as loaded
-        img.setAttribute('data-loaded', 'true');
-        img.removeAttribute('data-loading');
-        img.style.opacity = '1';
-        if (container) {
-            container.classList.remove('loading');
+        // Show loading state for images that aren't visible yet
+        if (!isElementInViewport(img)) {
+            if (container) {
+                container.classList.add('loading');
+            }
+            img.style.opacity = '0.3';
         }
+
+        // Create a new Image object to preload
+        const preloadImg = new Image();
+
+        preloadImg.onload = () => {
+            // Add to cache
+            imageCache.add(imageUrl);
+
+            // Update the actual img element
+            markImageAsLoaded(img, container);
+
+            loadedCount++;
+
+            // Log progress every 5 images or when complete
+            if (loadedCount % 5 === 0 || loadedCount === totalImages) {
+                devLog(`Preloaded ${loadedCount}/${totalImages} work images`);
+            }
+        };
+
+        preloadImg.onerror = () => {
+            devWarn('Failed to preload image:', imageUrl);
+            // Still mark as loaded to prevent further attempts
+            markImageAsLoaded(img, container);
+            loadedCount++;
+        };
+
+        // Set crossorigin for better caching
+        preloadImg.crossOrigin = 'anonymous';
+        preloadImg.src = imageUrl;
     });
 }
 
-// Optimize image loading behavior
-function optimizeImageLoading() {
-    const images = document.querySelectorAll('.work-item img');
+// Mark an image as fully loaded
+function markImageAsLoaded(img, container) {
+    img.setAttribute('data-loaded', 'true');
+    img.setAttribute('data-cached', 'true');
+    img.removeAttribute('data-loading');
+    img.style.opacity = '1';
 
-    images.forEach(img => {
-        // Add loading optimization attributes
-        img.setAttribute('decoding', 'async');
-        img.setAttribute('loading', 'lazy');
+    if (container) {
+        container.classList.remove('loading');
+        container.classList.add('cached');
+    }
+}
 
-        // Handle image load events
-        img.addEventListener('load', function() {
-            this.style.opacity = '1';
-            this.setAttribute('data-loaded', 'true');
-        });
-
-        img.addEventListener('error', function() {
-            this.style.opacity = '0.5';
-            console.warn('Image failed to load:', this.src);
-        });
-    });
+// Check if element is in viewport
+function isElementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
 }

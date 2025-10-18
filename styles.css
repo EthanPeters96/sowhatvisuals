@@ -118,6 +118,9 @@ p {
     display: none;
     flex-direction: column;
     cursor: pointer;
+    background: transparent;
+    border: none;
+    padding: 0;
 }
 
 .bar {
@@ -495,13 +498,38 @@ section {
 }
 
 /* Loading states for images */
-.work-img[loading="lazy"] {
-    opacity: 0;
+.work-img {
+    opacity: 1;
     transition: opacity 0.3s ease;
 }
 
 .work-img[data-loaded="true"] {
     opacity: 1;
+}
+
+.work-img[data-cached="true"] {
+    opacity: 1;
+}
+
+/* Loading animation for images being preloaded */
+.work-image.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+    z-index: 10;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 /* Image placeholder styles */
